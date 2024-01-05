@@ -1,0 +1,65 @@
+#include<stdio.h>
+#include<string.h>
+
+struct Class {
+    int class_no;
+    char class_name[100];
+    int num_students;
+    int block_no;
+};
+
+int main() {
+    struct Class classes[5];
+
+    // Read 5 class records (using fgets for robust string input)
+    for (int i = 0; i < 5; i++) {
+        printf("\nEnter details for class %d:\n", i + 1);
+
+        // Class No
+        printf("Class No: ");
+        while (scanf("%d", &classes[i].class_no) != 1) {
+            printf("Invalid input. Please enter an integer: ");
+            while (getchar() != '\n');  // Clear input buffer
+        }
+
+        // Clear the newline character left in the buffer
+        getchar();
+
+        // Class Name
+        printf("Class Name: ");
+        fgets(classes[i].class_name, sizeof(classes[i].class_name), stdin);
+        classes[i].class_name[strcspn(classes[i].class_name, "\n")] = '\0';  // Remove trailing newline
+
+        // Number of Students
+        printf("Number of Students: ");
+        while (scanf("%d", &classes[i].num_students) != 1) {
+            printf("Invalid input. Please enter an integer: ");
+            while (getchar() != '\n');  // Clear input buffer
+        }
+
+        // Clear the newline character left in the buffer
+        getchar();
+
+        // Block No
+        printf("Block No: ");
+        while (scanf("%d", &classes[i].block_no) != 1) {
+            printf("Invalid input. Please enter an integer: ");
+            while (getchar() != '\n');  // Clear input buffer
+        }
+
+        // Clear the newline character left in the buffer
+        getchar();
+    }
+
+    // Display the entered records
+    printf("\n\nClass Details:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("\nClass %d:\n", i + 1);
+        printf("Class No: %d\n", classes[i].class_no);
+        printf("Class Name: %s\n", classes[i].class_name);
+        printf("Number of Students: %d\n", classes[i].num_students);
+        printf("Block No: %d\n", classes[i].block_no);
+    }
+
+    return 0;
+}

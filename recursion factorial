@@ -1,0 +1,17 @@
+#include<stdio.h>
+int fact (int n)
+{
+    if (n==1)
+        return 1;
+
+    int f = n*fact(n-1);
+    return f;
+}
+void main ()
+{
+    int f, n;
+    printf ("Enter a number: ");
+    scanf ("%d", &n);
+    f = fact (n);
+    printf ("The factorial of %d is %d.\n", n,f);
+}
